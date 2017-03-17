@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts 
+Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+
+	<form-beans>		
+		<!-- <form-bean name="sinhVienForm" type="form.SinhVienForm" /> -->
+		<form-bean name="danhSachBaiDangForm" type="form.DanhSachBaiDangForm" />
+		<form-bean name="XoaBDForm" type="form.XoaBDForm" />
+		<form-bean name="themBDForm" type="form.ThemBDForm" />
+		<form-bean name="fileUploadForm" type="form.FileUpLoadForm" />
+	
+		
+	</form-beans>
+	
+	<action-mappings>
+		<action input="/index.jsp" name="danhSachBaiDangForm" 
+		path="/teoteo" scope="request" type="action.DanhSachBaiDangAction">
+		<forward name="thanhCong" path="/danhsachbaidang.jsp"/>
+		</action>
+		
+		<action input="/danhsachbaidang.jsp" path="/xoaSV" name="XoaBDForm" scope="request" type="action.XoaBaiDangAction">
+		<forward name="thanhCong" path="/teoteo.do"/>
+		</action>
+		
+		<action input="/index.jsp" name="themBDForm" path="/vien-teo-teo" scope="request" type="action.ThemBaiDangAction">
+			<forward name="themFail" path="/thembaidang.jsp"/>
+		</action>
+		
+		<action input="/thembaidang.jsp" name="themBDForm" path="/them-bd" scope="request" type="action.ThemBaiDangAction">
+			<forward name="themThanhCong" path="/teoteo.do"/>
+			<forward name="themFail" path="/abc.jsp"/>
+		</action>
+		<!-- <action path="/adminDTM" name="fileUploadForm" input="/hienthi.jsp" scope="request" type="action.FileUploadAction">
+			<forward name="thanhCong" path="/hienthi.jsp"></forward>
+			<forward name="thatBai" path="/hienthi.jsp"></forward>
+		</action> -->
+		<action input="/index.jsp" name="danhSachBaiDangForm" path="/tim-bd" scope="request" type="action.TimBaiDangAction">
+			<forward name="timthay" path="/danhsachbaidang.jsp"/>
+			<forward name="timkhongra" path="/index.jsp"/>
+		</action>
+	</action-mappings>
+	
+	<message-resources parameter="action.ApplicationResources" />
+	
+</struts-config>
